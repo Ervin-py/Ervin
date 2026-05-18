@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern IG Portfolio</title>
+<style>
+:root {
+  --bg: #fff;
+  --text: #111;
+  --card: #f7f7f7;
+  --border: #ddd;
+  --sub: #737373;
+  --hover: #f2f2f2;
+  --icon: #111;
+  --accent: #0095f6;
+  --sb-collapsed: 80px;
+  --sb-expanded: 245px;
+}
+
+body.light {
+  --bg: #000;
+  --text: #fff;
+  --card: #121212;
+  --border: #262626;
+  --sub: #a8a8a8;
+  --hover: #1a1a1a;
+  --icon: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: grid;
+  grid-template-columns: var(--sb-expanded) 1fr var(--sb-expanded);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.sidebar {
+  width: var(--sb-collapsed);
+  height: 100vh;
+  position: sticky;
+  left: 0;
+  top: 0;
+  padding: 20px 12px;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sidebar:hover, .sidebar.pinned {
+  width: var(--sb-expanded);
+}
+
+.top-nav,
+.bottom-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* change: unified button style with sidebar links */
+.nav-item {
+  display: flex;
+  align-items: center;
+  appearance: none;
+  gap: 14px;
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 16px;
+  transition: background 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: inherit; 
+  text-align: left; 
+  outline: none;
+}
+
+.nav-item span {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar:hover .nav-item span, 
+.sidebar.pinned .nav-item span {
+  opacity: 1;
+}
+
+.nav-item:hover {
+  background: var(--hover);
+  transform: translateX(2px);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: var(--icon);
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.profile-mini {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* SKILLS (IG HIGHLIGHTS STYLE) */
+.langs {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 18px 0 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.langs-title {
+  flex: 0 0 100%;
+  color: var(--sub);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin-bottom: -4px;
+}
+
+.lang {
+  text-align: center;
+  flex: 0 0 92px;
+}
+
+.lang-logo {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+  background: var(--bg);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.lang:hover .lang-logo {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* change: language logo sizing inside IG circle highlights */
+.lang svg {
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+
+.lang-copy strong {
+  display: block;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.lang-copy span {
+  display: block;
+  color: var(--sub);
+  font-size: 11px;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+
+
+.main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 935px;
+  padding: 40px 20px 80px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  margin-bottom: 18px;
+  padding-bottom: 0;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg);
+  outline: 3px solid var(--border);
+}
+
+.profile-info { 
+  flex: 1; 
+}
+
+
+.username-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.username { 
+  font-size: 22px; 
+  font-weight: 400; 
+}
+
+.stats {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.stats span { 
+  font-weight: 700; 
+}
+
+.bio { line-height: 1.6; }
+.bio-name { font-weight: 700; margin-bottom: 4px; display: block; }
+.bio-text { color: var(--sub); font-size: 14px; max-width: 450px; }
+
+.profile-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.profile-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  flex: 1;
+  max-width: 200px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+/* change: cleaner button feedback */
+.profile-btn:hover,
+.contact-btn:hover {
+  transform: translateY(-1px);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  border-top: 1px solid var(--border);
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+
+.tab {
+  padding: 16px 0;
+  font-size: 12px;
+  letter-spacing: 0;
+  color: var(--sub);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-top: 1px solid transparent;
+  margin-top: -1px;
+}
+
+.tab:hover { color: var(--text); }
+
+.tab.active {
+  color: var(--text);
+  border-top-color: var(--text);
+  font-weight: 700;
+}
+
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.post {
+  aspect-ratio: 1/1;
+  background: var(--card);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+/* change: added simple IG-style project overlay */
+.post-copy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.post-copy h4 {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.post-copy p {
+  font-size: 13px;
+  line-height: 1.4;
+  max-width: 220px;
+}
+
+.post:hover img {
+  transform: scale(1.04);
+}
+
+.post:hover .post-copy {
+  opacity: 1;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 12px 22px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+
+/* change: added logo sizing for skill tags */
+.skill-icon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+}
+
+.skill-tag:hover {
+  background: var(--hover);
+  transform: translateY(-2px);
+}
+
+.skill-category { margin-bottom: 30px; }
+.skill-category h4 {
+  font-size: 14px;
+  color: var(--sub);
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-label {
+  color: var(--sub);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.exp-item {
+  display: block;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* change: clean dropdown structure for experience, education, and certifications */
+.exp-item summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.exp-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.exp-icon {
+  width: 58px;
+  height: 58px;
+  background: var(--hover);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+.exp-details p,
+.exp-details li {
+  color: var(--sub);
+  font-size: 14px;
+}
+
+.exp-details ul {
+  padding-left: 18px;
+}
+
+.exp-details li {
+  margin-top: 6px;
+}
+
+.detail-body {
+  margin-left: 74px;
+  margin-top: 12px;
+}
+
+/* change: dropdown hint for design engineer experience */
+.dropdown-hint {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.exp-item[open] .dropdown-hint {
+  color: var(--sub);
+}
+
+.content-section {
+  padding-top: 40px;
+  margin-bottom: 60px;
+  scroll-margin-top: 60px;
+}
+
+/* change: redesigned contact section as footer */
+.site-footer {
+  text-align: center;
+  padding: 34px 0 10px;
+  border-top: 1px solid var(--border);
+  color: var(--sub);
+}
+
+.footer-title {
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.social-link {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.social-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid var(--border); /* change: logo stays inside IG circle highlight */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  background: var(--bg);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.social-link:hover .social-circle {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.social-circle svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--icon);
+}
+
+.contact-btn {
+  display: inline-block;
+  background: #0095f6;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600; 
+  margin-bottom: 18px;
+}
+
+.footer-note {
+  font-size: 12px;
+}
+
+@media(max-width: 1200px) {
+  body { grid-template-columns: var(--sb-collapsed) 1fr; }
+}
+
+@media(max-width: 768px) {
+  body { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .container { padding: 24px 14px 60px; }
+  .profile-header { gap: 22px; margin-bottom: 14px; }
+  .langs { margin: 16px 0 12px; }
+  .profile-pic { width: 80px; height: 80px; }
+  .profile-actions { justify-content: stretch; }
+  .stats { gap: 18px; font-size: 14px; }
+  .bio-text { font-size: 13px; }
+  .tabs { gap: 18px; overflow-x: auto; justify-content: flex-start; }
+  .detail-body { margin-left: 0; }
+}
+
+</style>
+</head>
+<body>
+
+
+
+  <div class="sidebar">
+    
+    <div class="top-nav">
+
+      <div class="nav-item">
+        <div class="icon">     
+          <!-- change: sidebar icon shares same nav-item style -->
+          <svg xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 24 24">
+              <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+          </svg>
+        </div>
+      </div>
+
+      <a href="#about-me" class="nav-item">
+        <div class="nav-links">
+          <!-- change: profile image kept inside sidebar nav circle area -->
+          <img src="2X2 (1).png" alt="Profile Picture" class="profile-mini">    
+        </div>
+        <span>About Me
+        </span>
+      </a>
+
+      <button class="nav-item" onclick="toggleTheme()">
+        <div class="icon">
+          <!-- change: IG-style outline theme icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.8A8.5 8.5 0 1111.2 3a6.8 6.8 0 009.8 9.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>   
+        </div>
+        <span>Switch Theme
+        </span>
+      </button>
+
+    </div>
+
+    <div class="bottom-nav">
+
+      <button class="nav-item" onclick="togglePin(event)">
+        <div class="icon">
+          <!-- change: IG-style outline pin sidebar icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="3" width="16" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 3v18M14.5 8.5l2 2-2 2M16.5 10.5H11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="pin-label">Pin Sidebar
+        </span>
+      </button>
+
+    </div>
+  
+
+  </div>
+
+<main class="main">
+
+  <div class="container">
+    
+    <section id="about-me" class="profile-header">
+      <img src="2X2 (1).png" alt="Profile Picture" class="profile-pic">
+    
+      <div class="profile-info">
+        <div class="username-row">
+          <div class="username">ervin_dev
+          </div>
+        </div>
+
+        <div class="stats">
+
+          <div>
+            <span>3
+            </span> 
+            projects
+          </div>
+
+          <div>
+            <span>11    
+            </span>
+            skills
+          </div>
+
+          <div>
+            <span>1
+            </span> 
+            exp
+          </div>
+
+        </div>
+
+        <div class="bio">
+          <span class="bio-name">Ervin Adoptante
+          </span>
+          <div class="bio-text">
+            Licensed Mechanical Engineer with strong analytical, automation, and system design background. Experienced in AI-assisted coding, data processing, Excel macro automation, and structured documentation for international engineering projects. Currently expanding expertise in web development, programming, and automation through hands-on training.
+          </div>
+        </div>
+        <div class="profile-actions">
+          <!-- change: portfolio actions styled like IG profile buttons -->
+          <a href="#projects" class="profile-btn">View projects
+          </a>
+          <a href="#contact" class="profile-btn">Contact
+          </a>
+
+              
+        <a href="https://drive.google.com/file/d/12Q3l3keJt3xflfVLmegBvUkb4GMv61GW/view" target="_blank">
+        <button class="profile-btn">View My Resume</button>
+        </a>
+            
+
+        </div>
+      
+      </div>
+      
+    </section>
+
+    <div id="langs" class="langs" aria-label="Web developing tools">
+      <div class="langs-title">Web developing tools</div>
+      <div class="lang">
+        <div class="lang-logo">
+          <!-- change: added JS logo inside circle highlight -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+            <path fill="#f7df1e" d="M2 2h124v124H2z"/>
+            <path fill="#111" d="M67.2 98.4c2.4 3.9 5.5 6.8 11 6.8 4.6 0 7.5-2.3 7.5-5.5 0-3.8-3-5.2-8.1-7.4l-2.8-1.2c-8-3.4-13.3-7.7-13.3-16.8 0-8.4 6.4-14.7 16.3-14.7 7.1 0 12.2 2.5 15.9 8.9L85 74.1c-1.9-3.4-4-4.8-7.2-4.8-3.3 0-5.4 2.1-5.4 4.8 0 3.4 2.1 4.7 6.9 6.8l2.8 1.2c9.4 4 14.8 8.2 14.8 17.4 0 10-7.8 15.4-18.3 15.4-10.3 0-16.9-4.9-20.1-11.3l8.7-5.2zm-39 1c1.7 3 3.2 5.6 6.9 5.6 3.5 0 5.8-1.4 5.8-6.8V60.3h10.8v38c0 11.2-6.6 16.3-16.2 16.3-8.7 0-13.7-4.5-16.3-9.9l9-5.3z"/>
+          </svg>
+        </div>
+        <div class="lang-copy">
+          <strong>JavaScript</strong>
+          <span>Interactivity</span>
+        </div>
+      </div>
+
+      <div class="lang">
+        <div class="lang-logo">
+          <!-- change: added HTML logo inside circle highlight -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+            <path fill="#e44d26" d="M19 3l8.2 92.3L64 105.5l36.9-10.2L109 3H19z"/>
+            <path fill="#f16529" d="M64 11.4v85.4l29.8-8.3 7-77.1H64z"/>
+            <path fill="#fff" d="M64 44.9H49.1l-1-11.6H64V22H35.7l.3 3.1 2.8 31.1H64V44.9zm0 29.5l-.1.1-12.5-3.4-.8-9.5H39.3l1.6 18.2 23 6.4.1-.1V74.4z"/>
+            <path fill="#ebebeb" d="M63.9 44.9v11.3h13.8l-1.3 14.9-12.5 3.4v11.7l23-6.4.2-1.9 2.7-29.9.3-3.1H63.9zm0-22.9v11.3h27.2l.2-2.5.5-5.7.3-3.1H63.9z"/>
+          </svg>
+        </div>
+        <div class="lang-copy">
+          <strong>HTML5</strong>
+          <span>Structure & SEO</span>
+        </div>
+      </div>
+
+      <div class="lang">
+        <div class="lang-logo">
+          <!-- change: added CSS logo inside circle highlight -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+            <path fill="#1572b6" d="M19 3l8.2 92.3L64 105.5l36.9-10.2L109 3H19z"/>
+            <path fill="#33a9dc" d="M64 11.4v85.4l29.8-8.3 7-77.1H64z"/>
+            <path fill="#fff" d="M64 44.9H49.1l-1-11.6H64V22H35.7l.3 3.1 2.8 31.1H64V44.9zm0 29.5l-.1.1-12.5-3.4-.8-9.5H39.3l1.6 18.2 23 6.4.1-.1V74.4z"/>
+            <path fill="#ebebeb" d="M63.9 44.9v11.3h13.8l-1.3 14.9-12.5 3.4v11.7l23-6.4.2-1.9 2.7-29.9.3-3.1H63.9zm0-22.9v11.3h27.2l.2-2.5.5-5.7.3-3.1H63.9z"/>
+          </svg>
+        </div>
+        <div class="lang-copy">
+          <strong>CSS</strong>
+          <span>Responsive UI</span>
+        </div>
+      </div>
+
+      <div class="lang">
+        <div class="lang-logo">
+          <!-- change: added Python logo inside circle highlight -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+            <path fill="#3776ab" d="M63.4 9.6c-27.3 0-25.6 11.8-25.6 11.8v12.2h26.1v3.7H27.5S10 35.3 10 62.9s15.3 26.6 15.3 26.6h9.1V76.8s-.5-15.3 15-15.3h25.9s14.5.2 14.5-14V24S92 9.6 63.4 9.6zM49 18.1a4.7 4.7 0 110 9.4 4.7 4.7 0 010-9.4z"/>
+            <path fill="#ffd43b" d="M64.6 118.4c27.3 0 25.6-11.8 25.6-11.8V94.4H64.1v-3.7h36.4s17.5 2 17.5-25.6-15.3-26.6-15.3-26.6h-9.1v12.7s.5 15.3-15 15.3H52.7s-14.5-.2-14.5 14V104s-2.2 14.4 26.4 14.4zm14.4-8.5a4.7 4.7 0 110-9.4 4.7 4.7 0 010 9.4z"/>
+          </svg>
+        </div>
+        <div class="lang-copy">
+          <strong>Python</strong>
+          <span>Automation scripts</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabs">
+      <a href="#projects" class="tab active">Projects        
+      </a>
+      <a href="#skills" class="tab">Skills        
+      </a>
+      <a href="#experience" class="tab">Experience        
+      </a>
+      <a href="#contact" class="tab">Contact        
+      </a>
+    </nav>
+
+    <section id="projects" class="content-section">
+      <div class="grid">
+        <!-- change: Web Portfolio project now links to GitHub -->
+        <a href="https://github.com/" class="post" target="_blank" rel="noopener">
+          <img src="assets/project-web-portfolio.svg" alt="Web portfolio project preview">
+          <div class="post-copy">
+            <h4>Web Portfolio</h4>
+            <p>Responsive personal portfolio built with HTML, CSS, and JavaScript.</p>
+          </div>
+        </a>
+
+        <!-- change: Automation project now links to Google Sheets portfolio -->
+        <a href="https://docs.google.com/spreadsheets/d/16_T220lCXIkz9xmEtoJx8r2x78dsFN6w/edit?rtpof=true&gid=1253665027#gid=1253665027" class="post" target="_blank" rel="noopener">
+          <img src="assets/project-automation-macro.svg" alt="Automation macro project preview">
+          <div class="post-copy">
+            <h4>Automation Macro</h4>
+            <p>Excel macro workflow for cleaning data and speeding up reports.</p>
+          </div>
+        </a>
+
+        <!-- change: Engineering project now links to Google Drive portfolio -->
+        <a href="https://drive.google.com/file/d/1yCMiu4eDAP3B8WyUDvI06YgzBAVgolXT/view?usp=sharing" class="post" target="_blank" rel="noopener">
+          <img src="assets/project-engineering.svg" alt="Engineering design project preview">
+          <div class="post-copy">
+            <h4>Engineering Design</h4>
+            <p>CAD modeling, drafting, and technical documentation projects.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="skills" class="content-section">
+      <div class="skill-category">
+        <h4>Web Development          
+        </h4>
+        <div class="skills-container">
+          <!-- change: skills updated to match resume wording -->
+          <div class="skill-tag">
+            <!-- change: added HTML logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#e44d26" d="M19 3l8.2 92.3L64 105.5l36.9-10.2L109 3H19z"/>
+              <path fill="#f16529" d="M64 11.4v85.4l29.8-8.3 7-77.1H64z"/>
+              <path fill="#fff" d="M64 44.9H49.1l-1-11.6H64V22H35.7l.3 3.1 2.8 31.1H64V44.9zm0 29.5l-.1.1-12.5-3.4-.8-9.5H39.3l1.6 18.2 23 6.4.1-.1V74.4z"/>
+              <path fill="#ebebeb" d="M63.9 44.9v11.3h13.8l-1.3 14.9-12.5 3.4v11.7l23-6.4.2-1.9 2.7-29.9.3-3.1H63.9zm0-22.9v11.3h27.2l.2-2.5.5-5.7.3-3.1H63.9z"/>
+            </svg>
+            HTML5 (Semantic HTML, SEO, Accessibility)
+          </div>
+          <div class="skill-tag">
+            <!-- change: added CSS logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#1572b6" d="M19 3l8.2 92.3L64 105.5l36.9-10.2L109 3H19z"/>
+              <path fill="#33a9dc" d="M64 11.4v85.4l29.8-8.3 7-77.1H64z"/>
+              <path fill="#fff" d="M64 44.9H49.1l-1-11.6H64V22H35.7l.3 3.1 2.8 31.1H64V44.9zm0 29.5l-.1.1-12.5-3.4-.8-9.5H39.3l1.6 18.2 23 6.4.1-.1V74.4z"/>
+              <path fill="#ebebeb" d="M63.9 44.9v11.3h13.8l-1.3 14.9-12.5 3.4v11.7l23-6.4.2-1.9 2.7-29.9.3-3.1H63.9zm0-22.9v11.3h27.2l.2-2.5.5-5.7.3-3.1H63.9z"/>
+            </svg>
+            CSS (Layouts, Responsive Design - currently expanding)
+          </div>
+          <div class="skill-tag">
+            <!-- change: added JavaScript logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#f7df1e" d="M2 2h124v124H2z"/>
+              <path fill="#111" d="M67.2 98.4c2.4 3.9 5.5 6.8 11 6.8 4.6 0 7.5-2.3 7.5-5.5 0-3.8-3-5.2-8.1-7.4l-2.8-1.2c-8-3.4-13.3-7.7-13.3-16.8 0-8.4 6.4-14.7 16.3-14.7 7.1 0 12.2 2.5 15.9 8.9L85 74.1c-1.9-3.4-4-4.8-7.2-4.8-3.3 0-5.4 2.1-5.4 4.8 0 3.4 2.1 4.7 6.9 6.8l2.8 1.2c9.4 4 14.8 8.2 14.8 17.4 0 10-7.8 15.4-18.3 15.4-10.3 0-16.9-4.9-20.1-11.3l8.7-5.2zm-39 1c1.7 3 3.2 5.6 6.9 5.6 3.5 0 5.8-1.4 5.8-6.8V60.3h10.8v38c0 11.2-6.6 16.3-16.2 16.3-8.7 0-13.7-4.5-16.3-9.9l9-5.3z"/>
+            </svg>
+            JavaScript (Foundations - currently expanding)
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Programming & Automation          
+        </h4>
+        <div class="skills-container">
+          <div class="skill-tag">
+            <!-- change: added Python logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#3776ab" d="M63.4 9.6c-27.3 0-25.6 11.8-25.6 11.8v12.2h26.1v3.7H27.5S10 35.3 10 62.9s15.3 26.6 15.3 26.6h9.1V76.8s-.5-15.3 15-15.3h25.9s14.5.2 14.5-14V24S92 9.6 63.4 9.6zM49 18.1a4.7 4.7 0 110 9.4 4.7 4.7 0 010-9.4z"/>
+              <path fill="#ffd43b" d="M64.6 118.4c27.3 0 25.6-11.8 25.6-11.8V94.4H64.1v-3.7h36.4s17.5 2 17.5-25.6-15.3-26.6-15.3-26.6h-9.1v12.7s.5 15.3-15 15.3H52.7s-14.5-.2-14.5 14V104s-2.2 14.4 26.4 14.4zm14.4-8.5a4.7 4.7 0 110-9.4 4.7 4.7 0 010 9.4z"/>
+            </svg>
+            Python (Basic scripting)
+          </div>
+          <div class="skill-tag">
+            <!-- change: added Excel automation logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#107c41" d="M4 3h11l5 5v13H4z"/>
+              <path fill="#33c481" d="M15 3v5h5z"/>
+              <path fill="#fff" d="M7 8h3l1.5 2.4L13 8h3l-2.8 4 3 4h-3l-1.7-2.5L9.8 16H7l3-4-3-4z"/>
+            </svg>
+            Excel Macro Automation (AI-assisted)
+          </div>
+          <div class="skill-tag">
+            <!-- change: added data cleaning icon -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6c0-2 4-3 8-3s8 1 8 3-4 3-8 3-8-1-8-3zm0 0v6c0 2 4 3 8 3s8-1 8-3V6M4 12v6c0 2 4 3 8 3s8-1 8-3v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M9 12l2 2 4-4" fill="none" stroke="#0095f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Data cleaning & transformation
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Tools          
+        </h4>
+        <div class="skills-container">
+          <div class="skill-tag">
+            <!-- change: added Git logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#f05032" d="M124.7 58.3L69.7 3.3a8 8 0 00-11.3 0L47 14.7l14.5 14.5a9.5 9.5 0 0112 12l14 14a9.5 9.5 0 11-5.7 5.3l-13-13v34.3a9.5 9.5 0 11-7.8-.3V46.9a9.5 9.5 0 01-5.2-12.5L41.5 20.1 3.3 58.3a8 8 0 000 11.3l55.1 55.1a8 8 0 0011.3 0l55-55a8 8 0 000-11.4z"/>
+            </svg>
+            Git (basic exposure - currently expanding)
+          </div>
+          <div class="skill-tag">
+            <!-- change: added VS Code logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#007acc" d="M118 22.6L93.3 10.7 42.1 60.2 20.2 43.6 10 48.7v30.6l10.2 5.1 21.9-16.6 51.2 49.5L118 105.4z"/>
+              <path fill="#1f9cf0" d="M93.3 10.7v106.6L118 105.4V22.6zM20.2 43.6v40.8l21.9-16.6V60.2z"/>
+            </svg>
+            VS Code
+          </div>
+          <div class="skill-tag">
+            <!-- change: added AI development tools -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3l1.7 4.4L18 9l-4.3 1.6L12 15l-1.7-4.4L6 9l4.3-1.6L12 3z" fill="#0095f6"/>
+              <path d="M19 13l.9 2.1L22 16l-2.1.9L19 19l-.9-2.1L16 16l2.1-.9L19 13zM5 14l.8 1.7L7.5 16.5l-1.7.8L5 19l-.8-1.7-1.7-.8 1.7-.8L5 14z" fill="currentColor"/>
+            </svg>
+            AI Tools (GitHub Copilot, Codex, ChatGPT)
+          </div>
+          <div class="skill-tag">
+            <!-- change: added Microsoft Excel logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#107c41" d="M4 3h11l5 5v13H4z"/>
+              <path fill="#33c481" d="M15 3v5h5z"/>
+              <path fill="#fff" d="M7 8h3l1.5 2.4L13 8h3l-2.8 4 3 4h-3l-1.7-2.5L9.8 16H7l3-4-3-4z"/>
+            </svg>
+            Microsoft Excel Advanced Functions
+          </div>
+          <div class="skill-tag">
+            <!-- change: added CAD tools icon -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 17L12 4l8 13H4z" fill="none" stroke="#0095f6" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M8 17l4-7 4 7M6 20h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            CATIA, SolidWorks, AutoCAD (Engineering Design Systems)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="content-section">
+      <h3 class="section-label">Experience</h3>
+      <div class="exp-list">
+        <!-- change: experience details are now hidden in dropdown -->
+        <details class="exp-item">
+          <summary>
+            <div class="exp-icon">ME</div>
+            <div class="exp-details">
+              <h4>Design Engineer</h4>
+              <p>Mitsuba Philippines &bull; July 2024 - Present</p>
+              <span class="dropdown-hint">Click to view work details</span>
+            </div>
+          </summary>
+          <div class="detail-body exp-details">
+            <!-- change: dropdown details based on tech-focused resume only -->
+            <ul>
+              <li>Automated engineering data processing using AI-assisted coding and macro scripting, improving reporting accuracy and reducing manual workload.</li>
+              <li>Applied structured development methodology similar to SDLC, including requirement analysis, validation, testing, and release.</li>
+              <li>Managed structured technical documentation and version-controlled design revisions using Data Management Systems.</li>
+              <li>Analyzed system inefficiencies and implemented data-driven process optimizations, reducing manual processing time by approximately 50%.</li>
+              <li>Coordinated with cross-functional international teams in the USA, Germany, Japan, and Vietnam.</li>
+              <li>Led end-to-end product development lifecycle for international automotive projects, from research and system design to production deployment.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- change: moved Contact section into footer -->
+    <footer id="contact" class="site-footer">
+      <h3 class="footer-title">Connect</h3>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/" class="social-link" target="_blank" rel="noopener">
+          <span class="social-circle">
+            <!-- change: added LinkedIn logo inside circle highlight -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.06c.53-1 1.84-2.2 3.79-2.2C19.7 8 20.5 10.67 20.5 14.14V24h-4v-8.74c0-2.08-.04-4.76-2.9-4.76-2.9 0-3.34 2.27-3.34 4.61V24h-4V8H8z"/>
+            </svg>
+          </span>
+          LinkedIn
+        </a>
+
+        <a href="mailto:ervinadoptante@email.com" class="social-link">
+          <span class="social-circle">
+            <!-- change: added Gmail contact option -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 6.5A2.5 2.5 0 015.5 4h13A2.5 2.5 0 0121 6.5v11a2.5 2.5 0 01-2.5 2.5h-13A2.5 2.5 0 013 17.5v-11z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M4 7l8 6 8-6" fill="none" stroke="#ea4335" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 17l5.5-5M20 17l-5.5-5" fill="none" stroke="#fbbc05" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          Gmail
+        </a>
+
+        <a href="https://github.com/" class="social-link" target="_blank" rel="noopener">
+          <span class="social-circle">
+            <!-- change: added GitHub logo inside circle highlight -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56v-2.16c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18A10.88 10.88 0 0112 6.04c.98 0 1.96.13 2.88.39 2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.42-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.19c0 .31.21.68.8.56A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/>
+            </svg>
+          </span>
+          GitHub
+        </a>
+      </div>
+
+      <a href="mailto:ervinadoptante@email.com" class="contact-btn">Email Me</a>
+      <p class="footer-note">&copy; 2026 Ervin Adoptante</p>
+    </footer>
+
+  </div>
+  
+</main>
+
+<script>
+function toggleTheme() { document.body.classList.toggle('light'); }
+
+function togglePin(e) {
+  e.preventDefault();
+  const sb = document.querySelector('.sidebar');
+  sb.classList.toggle('pinned');
+  document.querySelector('.pin-label').textContent = sb.classList.contains('pinned') ? "Unpin Sidebar" : "Pin Sidebar";
+}
+
+const tabs = document.querySelectorAll('.tab');
+const tabTargets = Array.from(tabs)
+  .map(tab => document.querySelector(tab.getAttribute('href')))
+  .filter(Boolean);
+
+function setActiveTab(id) {
+  tabs.forEach(tab => {
+    tab.classList.toggle('active', tab.getAttribute('href') === `#${id}`);
+  });
+}
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => setActiveTab(tab.getAttribute('href').slice(1)));
+});
+
+const tabObserver = new IntersectionObserver(entries => {
+  const visible = entries
+    .filter(entry => entry.isIntersecting)
+    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+  if (visible) {
+    setActiveTab(visible.target.id);
+  }
+}, {
+  rootMargin: '-35% 0px -45% 0px',
+  threshold: [0.1, 0.25, 0.5, 0.75]
+});
+
+tabTargets.forEach(section => tabObserver.observe(section));
+
+const initialTab = location.hash ? location.hash.slice(1) : 'projects';
+const initialPanel = tabTargets.some(section => section.id === initialTab) ? initialTab : 'projects';
+setActiveTab(initialPanel);
+</script>
+
+</body>
+</html>
