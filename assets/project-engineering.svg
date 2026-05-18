@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Engineering design project preview</title>
+  <desc id="desc">Mechanical design and drafting portfolio preview.</desc>
+  <rect width="900" height="900" fill="#030303"/>
+  <rect x="0" y="0" width="900" height="140" fill="#f4f4f4"/>
+  <g stroke="#222" stroke-width="3" fill="none" opacity=".75">
+    <circle cx="85" cy="70" r="42"/>
+    <circle cx="85" cy="70" r="17"/>
+    <path d="M42 70h86M85 27v86"/>
+    <path d="M230 20h92l38 52-34 48h-96l-36-50z"/>
+    <circle cx="246" cy="50" r="17"/>
+    <circle cx="318" cy="95" r="17"/>
+    <rect x="440" y="30" width="120" height="75" rx="8"/>
+    <path d="M455 50h90M455 70h90M455 90h58"/>
+    <path d="M640 22h150M640 58h112M640 94h150M666 22v95M748 22v95"/>
+  </g>
+  <path d="M685 0h175L685 150z" fill="#ffda3a"/>
+  <path d="M660 320l190-190v155L760 375l90 90v155z" fill="#ff8a00"/>
+  <path d="M680 500h220v260z" fill="#ffda3a"/>
+  <path d="M100 240h405v82H100zM100 345h330v82H100z" fill="#ffbd4a"/>
+  <text x="100" y="308" fill="#030303" font-family="Segoe UI, Arial, sans-serif" font-size="74" font-weight="900">PORT</text>
+  <text x="100" y="413" fill="#030303" font-family="Segoe UI, Arial, sans-serif" font-size="74" font-weight="900">FOLIO</text>
+  <text x="105" y="560" fill="#ffbd4a" font-family="Segoe UI, Arial, sans-serif" font-size="40">Engineering Design</text>
+  <text x="105" y="604" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="24">CAD modeling, drafting, and documentation</text>
+  <line x1="105" y1="680" x2="575" y2="680" stroke="#ffbd4a" stroke-width="4"/>
+  <text x="105" y="735" fill="#ffbd4a" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Ervin Adoptante</text>
+  <text x="105" y="772" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="22">Design &amp; Drafter Engineer</text>
+</svg>
