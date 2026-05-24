@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0071)file:///C:/Users/Windows%2011/Desktop/Portfolio_Ervin/test.html#contact -->
+<!-- saved from url=(0063)file:///C:/Users/Windows%2011/Desktop/Portfolio_Ervin/test.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -120,6 +120,12 @@ html {
 .nav-item:hover {
   background: var(--hover);
   transform: translateX(2px);
+}
+
+/* change: internal navigation now has a visible active state */
+.nav-item.active {
+  background: var(--hover);
+  color: var(--accent);
 }
 
 .nav-item:focus-visible,
@@ -606,7 +612,12 @@ html {
 .content-section {
   padding-top: 40px;
   margin-bottom: 60px;
-  scroll-margin-top: 60px;
+}
+
+.content-section,
+.profile-header,
+.site-footer {
+  scroll-margin-top: 70px;
 }
 
 /* change: redesigned contact section as footer */
@@ -783,7 +794,7 @@ html {
         </div>
       </div>
 
-      <a href="file:///C:/Users/Windows%2011/Desktop/Portfolio_Ervin/test.html#about-me" class="nav-item">
+      <a href="file:///C:/Users/Windows%2011/Desktop/Portfolio_Ervin/test.html#about-me" class="nav-item active">
         <div class="nav-links">
           <!-- change: profile image kept inside sidebar nav circle area -->
           <img src="./index_files/2X2 (1).png" alt="Profile Picture" class="profile-mini">    
@@ -905,7 +916,7 @@ html {
           </a>
 
               
-          <a href="https://drive.google.com/file/d/1Kxb87jPjeMooNJShCBDi_RsOD9S1RYNm/view?usp=sharing" class="profile-btn" target="_blank" rel="noopener">View resume
+          <a href="https://drive.google.com/file/d/1XPdmUt17LIcc2LD1W4cMWmwVCSXFCQ9Z/view?usp=sharing" class="profile-btn" target="_blank" rel="noopener">View resume
           </a>
             
 
@@ -983,7 +994,7 @@ html {
     </div>
 
     <nav class="tabs">
-      <a href="file:///C:/Users/Windows%2011/Desktop/Portfolio_Ervin/test.html#projects" class="tab active">Projects        
+      <a href="file:///C:/Users/Windows%2011/Desktop/Portfolio_Ervin/test.html#projects" class="tab">Projects        
       </a>
       <a href="file:///C:/Users/Windows%2011/Desktop/Portfolio_Ervin/test.html#skills" class="tab">Skills        
       </a>
@@ -1211,19 +1222,47 @@ function togglePin(e) {
   document.querySelector('.pin-label').textContent = sb.classList.contains('pinned') ? "Unpin Sidebar" : "Pin Sidebar";
 }
 
+const internalNavLinks = document.querySelectorAll('a[href^="#"]');
 const tabs = document.querySelectorAll('.tab');
+const sidebarLinks = document.querySelectorAll('.sidebar a[href^="#"]');
 const tabTargets = Array.from(tabs)
   .map(tab => document.querySelector(tab.getAttribute('href')))
   .filter(Boolean);
+const observedTargets = Array.from(new Set(
+  Array.from(internalNavLinks)
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean)
+));
 
 function setActiveTab(id) {
   tabs.forEach(tab => {
     tab.classList.toggle('active', tab.getAttribute('href') === `#${id}`);
   });
+  sidebarLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+  });
 }
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => setActiveTab(tab.getAttribute('href').slice(1)));
+function scrollToSection(id, updateHash = true) {
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setActiveTab(id);
+
+  if (updateHash) {
+    history.pushState(null, '', `#${id}`);
+  }
+}
+
+// change: explicitly handle all same-page nav links so sidebar, tabs, and profile buttons work consistently
+internalNavLinks.forEach(link => {
+  link.addEventListener('click', event => {
+    const id = link.getAttribute('href').slice(1);
+    if (!document.getElementById(id)) return;
+    event.preventDefault();
+    scrollToSection(id);
+  });
 });
 
 const tabObserver = new IntersectionObserver(entries => {
@@ -1239,11 +1278,15 @@ const tabObserver = new IntersectionObserver(entries => {
   threshold: [0.1, 0.25, 0.5, 0.75]
 });
 
-tabTargets.forEach(section => tabObserver.observe(section));
+observedTargets.forEach(section => tabObserver.observe(section));
 
 const initialTab = location.hash ? location.hash.slice(1) : 'projects';
-const initialPanel = tabTargets.some(section => section.id === initialTab) ? initialTab : 'projects';
+const initialPanel = observedTargets.some(section => section.id === initialTab) ? initialTab : 'projects';
 setActiveTab(initialPanel);
+
+if (location.hash && document.getElementById(location.hash.slice(1))) {
+  requestAnimationFrame(() => scrollToSection(location.hash.slice(1), false));
+}
 </script>
 
 
