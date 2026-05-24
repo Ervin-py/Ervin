@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 640" role="img" aria-labelledby="title desc">
+  <title id="title">2D drawing checker macro preview</title>
+  <desc id="desc">Work in progress macro concept for checking drawing title block, dimensions, material, and revision details.</desc>
+  <rect width="920" height="640" fill="#f8fafc"/>
+  <rect x="28" y="28" width="864" height="584" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+  <g stroke="#dbe3ee" stroke-width="1">
+    <path d="M70 78h560M70 156h560M70 234h560M70 312h560M70 390h560M70 468h560"/>
+    <path d="M150 78v430M230 78v430M310 78v430M390 78v430M470 78v430M550 78v430"/>
+  </g>
+  <g stroke="#111827" stroke-width="3" fill="none">
+    <path d="M106 160h235v72H106zM126 232l-38 92M315 232l34 92M78 324h300"/>
+    <path d="M440 165h310M455 240h294M475 240l245 8 38 42H454z"/>
+    <circle cx="452" cy="203" r="26"/><circle cx="452" cy="203" r="13"/>
+    <circle cx="716" cy="282" r="12"/>
+    <path d="M438 386h320M475 352h240M498 322h180"/>
+    <circle cx="475" cy="386" r="31"/><circle cx="475" cy="386" r="16"/>
+  </g>
+  <g fill="#111827" font-family="Arial, sans-serif">
+    <text x="118" y="126" font-size="18" font-weight="700">2D DRAWING DETAIL CHECKER</text>
+    <text x="455" y="452" font-size="11">CHECKING: dimensions, material, finish, revision, title block</text>
+  </g>
+  <g transform="translate(626 96)">
+    <rect width="220" height="338" rx="10" fill="#0f172a"/>
+    <text x="24" y="42" fill="#fff" font-family="Arial, sans-serif" font-size="18" font-weight="700">Macro Checklist</text>
+    <g font-family="Arial, sans-serif" font-size="14" fill="#e5e7eb">
+      <path d="M26 82l12 12 24-28" fill="none" stroke="#22c55e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="74" y="89">Title block</text>
+      <path d="M26 132l12 12 24-28" fill="none" stroke="#22c55e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="74" y="139">Material data</text>
+      <path d="M26 182l12 12 24-28" fill="none" stroke="#22c55e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="74" y="189">Revision fields</text>
+      <circle cx="40" cy="236" r="16" fill="none" stroke="#f59e0b" stroke-width="4"/>
+      <text x="74" y="241">Tolerance scan</text>
+      <circle cx="40" cy="286" r="16" fill="none" stroke="#f59e0b" stroke-width="4"/>
+      <text x="74" y="291">Dimension audit</text>
+    </g>
+  </g>
+  <g transform="translate(92 516)" stroke="#111827" fill="none" stroke-width="1.5">
+    <rect width="410" height="62"/>
+    <path d="M0 21h410M0 42h410M120 0v62M260 0v62"/>
+    <g fill="#111827" stroke="none" font-family="Arial, sans-serif" font-size="10">
+      <text x="10" y="15">STATUS</text><text x="130" y="15">WORK IN PROGRESS</text><text x="270" y="15">TARGET</text>
+      <text x="10" y="36">MODULE</text><text x="130" y="36">2D DRAWING CHECK</text><text x="270" y="36">DETAIL VALIDATION</text>
+      <text x="10" y="57">OUTPUT</text><text x="130" y="57">ISSUE LIST + SUMMARY</text><text x="270" y="57">MACRO AUTOMATION</text>
+    </g>
+  </g>
+</svg>
