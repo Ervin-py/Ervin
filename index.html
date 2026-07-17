@@ -1,57 +1,47 @@
 <!DOCTYPE html>
-<!-- saved from url=(0072)file:///C:/Users/Windows%2011/Desktop/Portfolio_Ervin/test.html#projects -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ervin Adoptante | Design Engineer Portfolio</title>
+<title>Modern IG Portfolio</title>
 <style>
 :root {
-  /* change: refined neutral engineering palette with one restrained accent */
-  --bg: #f8fafc;
-  --text: #111827;
-  --card: #ffffff;
-  --border: #d7dde5;
-  --sub: #64748b;
-  --hover: #eef2f6;
-  --icon: #111827;
-  --accent: #2563eb;
-  --accent-soft: #dbeafe;
+  --bg: #fff;
+  --text: #111;
+  --card: #f7f7f7;
+  --border: #ddd;
+  --sub: #737373;
+  --hover: #f2f2f2;
+  --icon: #111;
+  --accent: #0095f6;
   --sb-collapsed: 80px;
   --sb-expanded: 245px;
 }
 
 body.light {
-  --bg: #0f172a;
-  --text: #f8fafc;
-  --card: #111c31;
-  --border: #263247;
-  --sub: #aab6c8;
-  --hover: #1e293b;
-  --icon: #f8fafc;
-  --accent-soft: #1e3a8a;
+  --bg: #000;
+  --text: #fff;
+  --card: #121212;
+  --border: #262626;
+  --sub: #a8a8a8;
+  --hover: #1a1a1a;
+  --icon: #fff;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
-  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   display: grid;
-  /* change: sidebar starts compact again so hover expansion is visible */
-  grid-template-columns: var(--sb-collapsed) minmax(0, 1fr);
+  grid-template-columns: var(--sb-expanded) 1fr var(--sb-expanded);
   min-height: 100vh;
   line-height: 1.5;
-  transition: grid-template-columns 0.25s ease;
-}
-
-/* change: pinned sidebar now reserves layout space instead of covering main content */
-body.sidebar-pinned {
-  grid-template-columns: var(--sb-expanded) minmax(0, 1fr);
 }
 
 html {
@@ -122,20 +112,6 @@ html {
   transform: translateX(2px);
 }
 
-/* change: internal navigation now has a visible active state */
-.nav-item.active {
-  background: var(--hover);
-  color: var(--accent);
-}
-
-.nav-item:focus-visible,
-.profile-btn:focus-visible,
-.contact-btn:focus-visible,
-.tab:focus-visible {
-  outline: 3px solid var(--accent-soft);
-  outline-offset: 2px;
-}
-
 .nav-links {
   display: flex;
   align-items: center;
@@ -168,10 +144,10 @@ html {
 /* SKILLS (IG HIGHLIGHTS STYLE) */
 .langs {
   display: flex;
-  align-items: stretch;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 24px;
   flex-wrap: wrap;
-  margin: 22px 0 18px;
+  margin: 18px 0 16px;
   overflow-x: auto;
   padding-bottom: 8px;
 }
@@ -179,48 +155,34 @@ html {
 .langs-title {
   flex: 0 0 100%;
   color: var(--sub);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
-  margin-bottom: 2px;
+  margin-bottom: -4px;
 }
 
 .lang {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-align: left;
-  flex: 1 1 210px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 12px 22px;
-  border-radius: 20px;
-  transition: background 0.2s, transform 0.2s;
+  text-align: center;
+  flex: 0 0 92px;
 }
 
 .lang-logo {
-  width: 46px;
-  height: 46px;
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
+  margin: 0 auto 8px;
   background: var(--bg);
-  overflow: hidden;
   transition: transform 0.2s, border-color 0.2s;
-  flex: 0 0 auto;
 }
 
 .lang:hover .lang-logo {
   border-color: var(--accent);
-}
-
-.lang:hover {
-  background: var(--hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 /* change: language logo sizing inside IG circle highlights */
@@ -245,25 +207,6 @@ html {
   margin-top: 2px;
 }
 
-/* change: cropped software logo badges based on supplied CAD reference images */
-.cad-logo {
-  width: 46px;
-  height: 46px;
-  display: block;
-}
-
-.cad-logo .brand-text {
-  fill: #fff;
-  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-  font-weight: 800;
-  letter-spacing: 0;
-}
-
-.cad-logo .small-text {
-  font-size: 8px;
-  font-weight: 800;
-}
-
 
 
 .main {
@@ -274,8 +217,8 @@ html {
 
 .container {
   width: 100%;
-  max-width: 960px;
-  padding: clamp(24px, 4vw, 44px) clamp(14px, 3vw, 28px) 80px;
+  max-width: 935px;
+  padding: 40px 20px 80px;
 }
 
 .profile-header {
@@ -297,7 +240,6 @@ html {
 
 .profile-info { 
   flex: 1; 
-  min-width: 0;
 }
 
 
@@ -309,17 +251,8 @@ html {
 }
 
 .username { 
-  font-size: clamp(22px, 3vw, 30px); 
-  font-weight: 700; 
-  letter-spacing: 0;
-}
-
-/* change: required concise role tagline for recruiters */
-.tagline {
-  color: var(--accent);
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 12px;
+  font-size: 22px; 
+  font-weight: 400; 
 }
 
 .stats {
@@ -342,7 +275,6 @@ html {
   justify-content: flex-start;
   gap: 8px;
   margin-top: 20px;
-  flex-wrap: wrap;
 }
 
 .profile-btn {
@@ -354,7 +286,7 @@ html {
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
-  flex: 1 1 150px;
+  flex: 1;
   max-width: 200px;
   text-align: center;
   text-decoration: none;
@@ -377,12 +309,6 @@ html {
   top: 0;
   background: var(--bg);
   z-index: 10;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.tabs::-webkit-scrollbar {
-  display: none;
 }
 
 .tab {
@@ -423,10 +349,6 @@ html {
   text-decoration: none;
 }
 
-.post.is-disabled {
-  cursor: default;
-}
-
 .post img {
   width: 100%;
   height: 100%;
@@ -462,26 +384,6 @@ html {
   max-width: 220px;
 }
 
-/* change: project cards now show a clear click/redirect cue */
-.project-cue {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 4px;
-  padding: 6px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 999px;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0;
-}
-
-.post.is-disabled .project-cue {
-  border-color: rgba(255, 255, 255, 0.35);
-  color: rgba(255, 255, 255, 0.8);
-}
-
 .post:hover img {
   transform: scale(1.04);
 }
@@ -506,7 +408,6 @@ html {
   border-radius: 20px;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.4;
   transition: background 0.2s, transform 0.2s;
 }
 
@@ -538,19 +439,19 @@ html {
 
 .section-label {
   color: var(--sub);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
 .exp-item {
   display: block;
-  padding: 12px 22px;
+  padding: 16px;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 8px;
 }
 
 /* change: clean dropdown structure for experience, education, and certifications */
@@ -567,14 +468,14 @@ html {
 }
 
 .exp-icon {
-  width: 30px;
-  height: 30px;
+  width: 58px;
+  height: 58px;
   background: var(--hover);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   flex: 0 0 auto;
 }
@@ -594,7 +495,7 @@ html {
 }
 
 .detail-body {
-  margin-left: 46px;
+  margin-left: 74px;
   margin-top: 12px;
 }
 
@@ -612,12 +513,7 @@ html {
 .content-section {
   padding-top: 40px;
   margin-bottom: 60px;
-}
-
-.content-section,
-.profile-header,
-.site-footer {
-  scroll-margin-top: 70px;
+  scroll-margin-top: 60px;
 }
 
 /* change: redesigned contact section as footer */
@@ -639,7 +535,6 @@ html {
   justify-content: center;
   gap: 18px;
   margin-bottom: 18px;
-  flex-wrap: wrap;
 }
 
 .social-link {
@@ -689,90 +584,21 @@ html {
 }
 
 @media(max-width: 1200px) {
-  body { grid-template-columns: var(--sb-collapsed) minmax(0, 1fr); }
-  body.sidebar-pinned { grid-template-columns: var(--sb-expanded) minmax(0, 1fr); }
-  /* change: compact sidebar on medium screens while keeping labels available on hover/pin */
-  .sidebar { width: var(--sb-collapsed); }
-  .nav-item span { opacity: 0; }
-  .sidebar:hover,
-  .sidebar.pinned { width: var(--sb-expanded); }
-  .sidebar:hover .nav-item span,
-  .sidebar.pinned .nav-item span { opacity: 1; }
+  body { grid-template-columns: var(--sb-collapsed) 1fr; }
 }
 
 @media(max-width: 768px) {
   body { grid-template-columns: 1fr; }
-  body.sidebar-pinned { grid-template-columns: 1fr; }
-  /* change: mobile sidebar becomes a bottom navigation bar instead of disappearing */
-  .sidebar {
-    position: fixed;
-    inset: auto 0 0 0;
-    width: 100%;
-    height: auto;
-    padding: 8px max(10px, env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-right));
-    border-right: 0;
-    border-top: 1px solid var(--border);
-    z-index: 100;
-  }
-  .top-nav {
-    flex-direction: row;
-    justify-content: space-around;
-    gap: 4px;
-  }
-  .bottom-nav,
-  .nav-brand {
-    display: none;
-  }
-  .nav-item {
-    justify-content: center;
-    min-width: 44px;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  .nav-item span {
-    display: none;
-  }
-  .nav-item:hover {
-    transform: none;
-  }
-  .container { padding: 24px 14px 92px; }
-  .profile-header {
-    display: grid;
-    grid-template-columns: 84px minmax(0, 1fr);
-    gap: 18px;
-    margin-bottom: 14px;
-  }
-  .profile-info { display: contents; }
-  .username-row { margin-bottom: 4px; }
-  .tagline,
-  .stats { grid-column: 2; }
-  .bio,
-  .profile-actions { grid-column: 1 / -1; }
-  .langs { margin: 16px 0 12px; gap: 12px; }
-  .lang { flex: 1 1 100%; border-radius: 10px; }
-  .profile-pic { width: 84px; height: 84px; }
+  .sidebar { display: none; }
+  .container { padding: 24px 14px 60px; }
+  .profile-header { gap: 22px; margin-bottom: 14px; }
+  .langs { margin: 16px 0 12px; }
+  .profile-pic { width: 80px; height: 80px; }
   .profile-actions { justify-content: stretch; }
-  .profile-btn { max-width: none; }
-  .stats { gap: 14px; font-size: 13px; flex-wrap: wrap; }
+  .stats { gap: 18px; font-size: 14px; }
   .bio-text { font-size: 13px; }
-  .tabs { gap: 18px; justify-content: flex-start; padding: 0 2px; }
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .skill-tag { width: 100%; border-radius: 10px; }
+  .tabs { gap: 18px; overflow-x: auto; justify-content: flex-start; }
   .detail-body { margin-left: 0; }
-  .site-footer { padding-bottom: 18px; }
-}
-
-@media(max-width: 375px) {
-  /* change: small-phone breakpoint keeps text and controls from crowding */
-  .container { padding-inline: 12px; }
-  .profile-header { grid-template-columns: 72px minmax(0, 1fr); gap: 14px; }
-  .profile-pic { width: 72px; height: 72px; }
-  .username { font-size: 21px; }
-  .tagline { font-size: 13px; }
-  .stats { gap: 10px; }
-  .grid { grid-template-columns: 1fr; }
-  .post-copy { opacity: 1; background: linear-gradient(180deg, rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.82)); }
-  .social-circle { width: 58px; height: 58px; }
 }
 
 </style>
@@ -785,11 +611,12 @@ html {
     
     <div class="top-nav">
 
-      <div class="nav-item nav-brand" aria-hidden="true">
+      <div class="nav-item">
         <div class="icon">     
-          <!-- change: sidebar brand/menu icon hidden on small mobile nav -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"></path>
+          <!-- change: sidebar icon shares same nav-item style -->
+          <svg xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 24 24">
+              <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
           </svg>
         </div>
       </div>
@@ -797,48 +624,17 @@ html {
       <a href="#about-me" class="nav-item">
         <div class="nav-links">
           <!-- change: profile image kept inside sidebar nav circle area -->
-          <img src="./index_files/2X2 (1).png" alt="Profile Picture" class="profile-mini">    
+          <img src="2X2 (1).png" alt="Profile Picture" class="profile-mini">    
         </div>
         <span>About Me
         </span>
-      </a>
-
-      <a href="#projects" class="nav-item active">
-        <div class="icon">
-          <!-- change: added project navigation for the required portfolio sections -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 5h16v14H4zM4 10h16M9 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
-          </svg>
-        </div>
-        <span>Projects</span>
-      </a>
-
-      <a href="#skills" class="nav-item">
-        <div class="icon">
-          <!-- change: added skills navigation for faster recruiter scanning -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5L12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
-          </svg>
-        </div>
-        <span>Skills</span>
-      </a>
-
-      <a href="#contact" class="nav-item">
-        <div class="icon">
-          <!-- change: added contact navigation to keep footer reachable on mobile -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
-            <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
-          </svg>
-        </div>
-        <span>Contact</span>
       </a>
 
       <button class="nav-item" onclick="toggleTheme()">
         <div class="icon">
           <!-- change: IG-style outline theme icon -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21 12.8A8.5 8.5 0 1111.2 3a6.8 6.8 0 009.8 9.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M21 12.8A8.5 8.5 0 1111.2 3a6.8 6.8 0 009.8 9.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>   
         </div>
         <span>Switch Theme
@@ -853,8 +649,8 @@ html {
         <div class="icon">
           <!-- change: IG-style outline pin sidebar icon -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="4" y="3" width="16" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"></rect>
-            <path d="M9 3v18M14.5 8.5l2 2-2 2M16.5 10.5H11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <rect x="4" y="3" width="16" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 3v18M14.5 8.5l2 2-2 2M16.5 10.5H11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <span class="pin-label">Pin Sidebar
@@ -871,11 +667,11 @@ html {
   <div class="container">
     
     <section id="about-me" class="profile-header">
-      <img src="./index_files/2X2 (1).png" alt="Ervin Adoptante profile photo" class="profile-pic" width="150" height="150" decoding="async">
+      <img src="2X2 (1).png" alt="Profile Picture" class="profile-pic">
     
       <div class="profile-info">
         <div class="username-row">
-          <div class="username">Ervin Adoptante
+          <div class="username">ervin_dev
           </div>
         </div>
 
@@ -902,10 +698,10 @@ html {
         </div>
 
         <div class="bio">
-          <span class="bio-name">Design Engineer | CAD Design &amp; Automation
+          <span class="bio-name">Ervin Adoptante
           </span>
           <div class="bio-text">
-            Mechanical Engineer with 2 years’ CATIA experience in automotive design, R&amp;D, and prototype development. Skilled in CAD optimization, lean manufacturing (5S, Kaizen, Six Sigma), and cross‑functional collaboration to deliver cost‑effective engineering solutions.
+            Licensed Mechanical Engineer with strong analytical, automation, and system design background. Experienced in AI-assisted coding, data processing, Excel macro automation, and structured documentation for international engineering projects. Currently expanding expertise in web development, programming, and automation through hands-on training.
           </div>
         </div>
         <div class="profile-actions">
@@ -916,8 +712,9 @@ html {
           </a>
 
               
-          <a href="https://drive.google.com/file/d/1XPdmUt17LIcc2LD1W4cMWmwVCSXFCQ9Z/view?usp=sharing" class="profile-btn" target="_blank" rel="noopener">View resume
-          </a>
+        <a href="https://drive.google.com/file/d/1XPdmUt17LIcc2LD1W4cMWmwVCSXFCQ9Z/view?usp=sharing" target="_blank">
+        <button class="profile-btn">View My Resume</button>
+        </a>
             
 
         </div>
@@ -926,69 +723,65 @@ html {
       
     </section>
 
-    <div id="langs" class="langs" aria-label="CAD software tools">
-      <div class="langs-title">CAD software tools</div>
+    <div id="langs" class="langs" aria-label="Web developing tools">
+      <div class="langs-title">Web developing tools</div>
       <div class="lang">
         <div class="lang-logo">
-          <!-- change: added CAD logo badge for CATIA -->
-          <svg class="cad-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 82" aria-hidden="true">
-            <rect width="82" height="82" fill="#071f78"></rect>
-            <path d="M22 27c8-6 18-4 14 4-2 4-8 6-12 9 9-3 17-2 19 2 3 6-7 11-24 13 9-7 16-17 15-20-1-3-7-2-14 1 5-3 11-8 10-10-.7-1.7-4.6-1.4-8 .7z" fill="#fff"></path>
-            <text class="brand-text" x="42" y="48" font-size="15">CATIA</text>
+          <!-- change: added JS logo inside circle highlight -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+            <path fill="#f7df1e" d="M2 2h124v124H2z"/>
+            <path fill="#111" d="M67.2 98.4c2.4 3.9 5.5 6.8 11 6.8 4.6 0 7.5-2.3 7.5-5.5 0-3.8-3-5.2-8.1-7.4l-2.8-1.2c-8-3.4-13.3-7.7-13.3-16.8 0-8.4 6.4-14.7 16.3-14.7 7.1 0 12.2 2.5 15.9 8.9L85 74.1c-1.9-3.4-4-4.8-7.2-4.8-3.3 0-5.4 2.1-5.4 4.8 0 3.4 2.1 4.7 6.9 6.8l2.8 1.2c9.4 4 14.8 8.2 14.8 17.4 0 10-7.8 15.4-18.3 15.4-10.3 0-16.9-4.9-20.1-11.3l8.7-5.2zm-39 1c1.7 3 3.2 5.6 6.9 5.6 3.5 0 5.8-1.4 5.8-6.8V60.3h10.8v38c0 11.2-6.6 16.3-16.2 16.3-8.7 0-13.7-4.5-16.3-9.9l9-5.3z"/>
           </svg>
         </div>
         <div class="lang-copy">
-          <strong>CATIA</strong>
-          <span>3D product design</span>
+          <strong>JavaScript</strong>
+          <span>Interactivity</span>
         </div>
       </div>
 
       <div class="lang">
         <div class="lang-logo">
-          <!-- change: added CAD logo badge for SolidWorks -->
-          <svg class="cad-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 82" aria-hidden="true">
-            <rect width="82" height="82" fill="#ed1c16"></rect>
-            <path d="M17 29c7-5 15-4 12 3-1.4 3.3-6.6 5.4-10.2 8 7.5-2.5 14.5-1.6 16.3 1.8 2.5 5.4-7 9.5-21 11.2 7.6-6.6 13.3-14.2 12.2-16.7-.9-2-5.2-1.4-11 1.3 4.2-3 9.2-7 8.5-8.7-.6-1.3-3.7-1.1-6.8.1z" fill="#fff"></path>
-            <text class="brand-text" x="36" y="47" font-size="11">SOLID</text>
-            <text class="brand-text" x="59" y="47" font-size="11" font-weight="500">WORKS</text>
+          <!-- change: added HTML logo inside circle highlight -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+            <path fill="#e44d26" d="M19 3l8.2 92.3L64 105.5l36.9-10.2L109 3H19z"/>
+            <path fill="#f16529" d="M64 11.4v85.4l29.8-8.3 7-77.1H64z"/>
+            <path fill="#fff" d="M64 44.9H49.1l-1-11.6H64V22H35.7l.3 3.1 2.8 31.1H64V44.9zm0 29.5l-.1.1-12.5-3.4-.8-9.5H39.3l1.6 18.2 23 6.4.1-.1V74.4z"/>
+            <path fill="#ebebeb" d="M63.9 44.9v11.3h13.8l-1.3 14.9-12.5 3.4v11.7l23-6.4.2-1.9 2.7-29.9.3-3.1H63.9zm0-22.9v11.3h27.2l.2-2.5.5-5.7.3-3.1H63.9z"/>
           </svg>
         </div>
         <div class="lang-copy">
-          <strong>SolidWorks</strong>
-          <span>Mechanical CAD</span>
+          <strong>HTML5</strong>
+          <span>Structure & SEO</span>
         </div>
       </div>
 
       <div class="lang">
         <div class="lang-logo">
-          <!-- change: added CAD logo badge for AutoCAD -->
-          <svg class="cad-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 82" aria-hidden="true">
-            <rect width="82" height="82" fill="#fff"></rect>
-            <path d="M21 24l13-8h29v34H21z" fill="#e91557"></path>
-            <path d="M21 24l13-8v34l-13 8z" fill="#f15b8a"></path>
-            <path d="M30 50h35v18H30z" fill="#7c0624"></path>
-            <text class="brand-text" x="47" y="43" font-size="36" text-anchor="middle">A</text>
-            <text class="brand-text small-text" x="47" y="63" text-anchor="middle">CAD</text>
+          <!-- change: added CSS logo inside circle highlight -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+            <path fill="#1572b6" d="M19 3l8.2 92.3L64 105.5l36.9-10.2L109 3H19z"/>
+            <path fill="#33a9dc" d="M64 11.4v85.4l29.8-8.3 7-77.1H64z"/>
+            <path fill="#fff" d="M64 44.9H49.1l-1-11.6H64V22H35.7l.3 3.1 2.8 31.1H64V44.9zm0 29.5l-.1.1-12.5-3.4-.8-9.5H39.3l1.6 18.2 23 6.4.1-.1V74.4z"/>
+            <path fill="#ebebeb" d="M63.9 44.9v11.3h13.8l-1.3 14.9-12.5 3.4v11.7l23-6.4.2-1.9 2.7-29.9.3-3.1H63.9zm0-22.9v11.3h27.2l.2-2.5.5-5.7.3-3.1H63.9z"/>
           </svg>
         </div>
         <div class="lang-copy">
-          <strong>AutoCAD</strong>
-          <span>2D drafting</span>
+          <strong>CSS</strong>
+          <span>Responsive UI</span>
         </div>
       </div>
 
       <div class="lang">
         <div class="lang-logo">
-          <!-- change: added workflow logo badge for design data management -->
-          <svg class="cad-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
-            <path d="M18 12h22l8 8v32H18z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"></path>
-            <path d="M40 12v10h10M25 31h16M25 39h16" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"></path>
-            <text x="32" y="58" text-anchor="middle">DMS</text>
+          <!-- change: added Python logo inside circle highlight -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+            <path fill="#3776ab" d="M63.4 9.6c-27.3 0-25.6 11.8-25.6 11.8v12.2h26.1v3.7H27.5S10 35.3 10 62.9s15.3 26.6 15.3 26.6h9.1V76.8s-.5-15.3 15-15.3h25.9s14.5.2 14.5-14V24S92 9.6 63.4 9.6zM49 18.1a4.7 4.7 0 110 9.4 4.7 4.7 0 010-9.4z"/>
+            <path fill="#ffd43b" d="M64.6 118.4c27.3 0 25.6-11.8 25.6-11.8V94.4H64.1v-3.7h36.4s17.5 2 17.5-25.6-15.3-26.6-15.3-26.6h-9.1v12.7s.5 15.3-15 15.3H52.7s-14.5-.2-14.5 14V104s-2.2 14.4 26.4 14.4zm14.4-8.5a4.7 4.7 0 110-9.4 4.7 4.7 0 010 9.4z"/>
           </svg>
         </div>
         <div class="lang-copy">
-          <strong>Design Data</strong>
-          <span>Revision control</span>
+          <strong>Python</strong>
+          <span>Automation scripts</span>
         </div>
       </div>
     </div>
@@ -1006,135 +799,147 @@ html {
 
     <section id="projects" class="content-section">
       <div class="grid">
-        <!-- change: engineering CAD project is first and uses the restored clean CAD preview -->
-        <a href="https://drive.google.com/file/d/1bK-Xstb156m3vFzGmHIw-OYqpsnOi6sM/view?usp=sharing" class="post" target="_blank" rel="noopener">
-          <img src="./index_files/project-engineering.svg" alt="Engineering design project preview" loading="lazy" decoding="async">
+        <!-- change: Web Portfolio project now links to GitHub -->
+        <a href="https://ervin-py.github.io/Ervin/" class="post" target="_blank" rel="noopener">
+          <img src="assets/project-web-portfolio.svg" alt="Web portfolio project preview">
           <div class="post-copy">
-            <h4>Engineering Design</h4>
-            <p>CAD modeling, mechanical assemblies, drawing review, BOM, and technical documentation.</p>
-            <span class="project-cue">Click to view project</span>
+            <h4>Web Portfolio</h4>
+            <p>Responsive personal portfolio built with HTML, CSS, and JavaScript, optimized with AI assistance for design.</p>
           </div>
         </a>
 
-        <!-- change: automation macro remains second -->
-        <a href="https://docs.google.com/spreadsheets/d/16_T220lCXIkz9xmEtoJx8r2x78dsFN6w/edit?rtpof=true&amp;gid=1253665027#gid=1253665027" class="post" target="_blank" rel="noopener">
-          <img src="./index_files/project-automation-macro.svg" alt="Automation macro project preview" loading="lazy" decoding="async">
+        <!-- change: Automation project now links to Google Sheets portfolio -->
+        <a href="https://docs.google.com/spreadsheets/d/16_T220lCXIkz9xmEtoJx8r2x78dsFN6w/edit?rtpof=true&gid=1253665027#gid=1253665027" class="post" target="_blank" rel="noopener">
+          <img src="assets/project-automation-macro.svg" alt="Automation macro project preview">
           <div class="post-copy">
             <h4>Automation Macro</h4>
             <p>Excel macro workflow for cleaning data and speeding up reports.</p>
-            <span class="project-cue">Click to view project</span>
           </div>
         </a>
 
-        <!-- change: third project is a work-in-progress drawing checker macro -->
-        <article class="post is-disabled">
-          <img src="./index_files/project-drawing-checker.svg" alt="Work in progress 2D drawing checker macro preview" loading="lazy" decoding="async">
+        <!-- change: Engineering project now links to Google Drive portfolio -->
+        <a href="https://drive.google.com/file/d/1bK-Xstb156m3vFzGmHIw-OYqpsnOi6sM/view?usp=sharing" class="post" target="_blank" rel="noopener">
+          <img src="assets/project-engineering.svg" alt="Engineering design project preview">
           <div class="post-copy">
-            <h4>2D Drawing Checker Macro</h4>
-            <p>Work in progress tool for checking drawing details, title block fields, dimensions, and revision data.</p>
-            <span class="project-cue">Work in progress</span>
+            <h4>Engineering Design</h4>
+            <p>CAD modeling, drafting, and technical documentation projects.</p>
           </div>
-        </article>
+        </a>
       </div>
     </section>
 
     <section id="skills" class="content-section">
       <div class="skill-category">
-        <h4>Design &amp; CAD Tools          
+        <h4>Web Development          
         </h4>
         <div class="skills-container">
-          <!-- change: skills rewritten to read as a CAD/design engineer profile -->
+          <!-- change: skills updated to match resume wording -->
           <div class="skill-tag">
-            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 19h16M6 17l9-9 3 3-9 9H6v-3z" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round"></path>
-              <path d="M14 9l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <!-- change: added HTML logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#e44d26" d="M19 3l8.2 92.3L64 105.5l36.9-10.2L109 3H19z"/>
+              <path fill="#f16529" d="M64 11.4v85.4l29.8-8.3 7-77.1H64z"/>
+              <path fill="#fff" d="M64 44.9H49.1l-1-11.6H64V22H35.7l.3 3.1 2.8 31.1H64V44.9zm0 29.5l-.1.1-12.5-3.4-.8-9.5H39.3l1.6 18.2 23 6.4.1-.1V74.4z"/>
+              <path fill="#ebebeb" d="M63.9 44.9v11.3h13.8l-1.3 14.9-12.5 3.4v11.7l23-6.4.2-1.9 2.7-29.9.3-3.1H63.9zm0-22.9v11.3h27.2l.2-2.5.5-5.7.3-3.1H63.9z"/>
             </svg>
-            AutoCAD (2D layouts and fabrication drawings)
+            HTML5 (Semantic HTML, SEO, Accessibility)
           </div>
           <div class="skill-tag">
-            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 17L12 4l8 13H4z" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round"></path>
-              <path d="M8 17l4-7 4 7M6 20h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <!-- change: added CSS logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#1572b6" d="M19 3l8.2 92.3L64 105.5l36.9-10.2L109 3H19z"/>
+              <path fill="#33a9dc" d="M64 11.4v85.4l29.8-8.3 7-77.1H64z"/>
+              <path fill="#fff" d="M64 44.9H49.1l-1-11.6H64V22H35.7l.3 3.1 2.8 31.1H64V44.9zm0 29.5l-.1.1-12.5-3.4-.8-9.5H39.3l1.6 18.2 23 6.4.1-.1V74.4z"/>
+              <path fill="#ebebeb" d="M63.9 44.9v11.3h13.8l-1.3 14.9-12.5 3.4v11.7l23-6.4.2-1.9 2.7-29.9.3-3.1H63.9zm0-22.9v11.3h27.2l.2-2.5.5-5.7.3-3.1H63.9z"/>
             </svg>
-            CATIA (3D/2D assemblies)
+            CSS (Layouts, Responsive Design - currently expanding)
           </div>
           <div class="skill-tag">
-            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round"></path>
-              <path d="M12 12l7-5M12 12v9M12 12L5 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <!-- change: added JavaScript logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#f7df1e" d="M2 2h124v124H2z"/>
+              <path fill="#111" d="M67.2 98.4c2.4 3.9 5.5 6.8 11 6.8 4.6 0 7.5-2.3 7.5-5.5 0-3.8-3-5.2-8.1-7.4l-2.8-1.2c-8-3.4-13.3-7.7-13.3-16.8 0-8.4 6.4-14.7 16.3-14.7 7.1 0 12.2 2.5 15.9 8.9L85 74.1c-1.9-3.4-4-4.8-7.2-4.8-3.3 0-5.4 2.1-5.4 4.8 0 3.4 2.1 4.7 6.9 6.8l2.8 1.2c9.4 4 14.8 8.2 14.8 17.4 0 10-7.8 15.4-18.3 15.4-10.3 0-16.9-4.9-20.1-11.3l8.7-5.2zm-39 1c1.7 3 3.2 5.6 6.9 5.6 3.5 0 5.8-1.4 5.8-6.8V60.3h10.8v38c0 11.2-6.6 16.3-16.2 16.3-8.7 0-13.7-4.5-16.3-9.9l9-5.3z"/>
             </svg>
-            SolidWorks (design configurations)
-          </div>
-          <div class="skill-tag">
-            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 18c4-8 10-8 14 0M7 18h10M12 6v8" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"></path>
-              <path d="M8 8l4-4 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            Fusion 360 (basic exposure), MEP, and Creo basics
+            JavaScript (Foundations - currently expanding)
           </div>
         </div>
       </div>
 
       <div class="skill-category">
-        <h4>Engineering Skills          
+        <h4>Programming & Automation          
         </h4>
         <div class="skills-container">
           <div class="skill-tag">
-            <!-- change: engineering skill tags replace programmer-facing tags -->
-            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 5h14v14H5zM8 8h8M8 12h8M8 16h5" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <!-- change: added Python logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#3776ab" d="M63.4 9.6c-27.3 0-25.6 11.8-25.6 11.8v12.2h26.1v3.7H27.5S10 35.3 10 62.9s15.3 26.6 15.3 26.6h9.1V76.8s-.5-15.3 15-15.3h25.9s14.5.2 14.5-14V24S92 9.6 63.4 9.6zM49 18.1a4.7 4.7 0 110 9.4 4.7 4.7 0 010-9.4z"/>
+              <path fill="#ffd43b" d="M64.6 118.4c27.3 0 25.6-11.8 25.6-11.8V94.4H64.1v-3.7h36.4s17.5 2 17.5-25.6-15.3-26.6-15.3-26.6h-9.1v12.7s.5 15.3-15 15.3H52.7s-14.5-.2-14.5 14V104s-2.2 14.4 26.4 14.4zm14.4-8.5a4.7 4.7 0 110-9.4 4.7 4.7 0 010 9.4z"/>
             </svg>
-            CAD drawing review and engineering documentation
+            Python (Basic scripting)
           </div>
           <div class="skill-tag">
+            <!-- change: added Excel automation logo -->
             <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 7h16M4 12h16M4 17h16M8 4v16M16 4v16" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"></path>
+              <path fill="#107c41" d="M4 3h11l5 5v13H4z"/>
+              <path fill="#33c481" d="M15 3v5h5z"/>
+              <path fill="#fff" d="M7 8h3l1.5 2.4L13 8h3l-2.8 4 3 4h-3l-1.7-2.5L9.8 16H7l3-4-3-4z"/>
             </svg>
-            BOM creation, mass calculation, and tolerance calculation
+            Excel Macro Automation (AI-assisted)
           </div>
           <div class="skill-tag">
+            <!-- change: added data cleaning icon -->
             <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round"></path>
-              <path d="M9 12h6M12 9v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M4 6c0-2 4-3 8-3s8 1 8 3-4 3-8 3-8-1-8-3zm0 0v6c0 2 4 3 8 3s8-1 8-3V6M4 12v6c0 2 4 3 8 3s8-1 8-3v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M9 12l2 2 4-4" fill="none" stroke="#0095f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            Mechanical design and prototype development
-          </div>
-          <div class="skill-tag">
-            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 18h16M6 16l4-8 4 8 4-8" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M8 12h4M16 12h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-            </svg>
-            GD&amp;T application and HVAC fundamentals
+            Data cleaning & transformation
           </div>
         </div>
       </div>
 
       <div class="skill-category">
-        <h4>Project Tools          
+        <h4>Tools          
         </h4>
         <div class="skills-container">
           <div class="skill-tag">
-            <!-- change: project tool tags now match CAD resume language -->
-            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 4h14v16H5z" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round"></path>
-              <path d="M8 8h8M8 12h8M8 16h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <!-- change: added Git logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#f05032" d="M124.7 58.3L69.7 3.3a8 8 0 00-11.3 0L47 14.7l14.5 14.5a9.5 9.5 0 0112 12l14 14a9.5 9.5 0 11-5.7 5.3l-13-13v34.3a9.5 9.5 0 11-7.8-.3V46.9a9.5 9.5 0 01-5.2-12.5L41.5 20.1 3.3 58.3a8 8 0 000 11.3l55.1 55.1a8 8 0 0011.3 0l55-55a8 8 0 000-11.4z"/>
             </svg>
-            Microsoft Office for reports, calculations, and documentation
+            Git (basic exposure - currently expanding)
           </div>
           <div class="skill-tag">
-            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6 4h12v16H6z" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round"></path>
-              <path d="M9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <!-- change: added VS Code logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true">
+              <path fill="#007acc" d="M118 22.6L93.3 10.7 42.1 60.2 20.2 43.6 10 48.7v30.6l10.2 5.1 21.9-16.6 51.2 49.5L118 105.4z"/>
+              <path fill="#1f9cf0" d="M93.3 10.7v106.6L118 105.4V22.6zM20.2 43.6v40.8l21.9-16.6V60.2z"/>
             </svg>
-            Data Management Systems (DMS)
+            VS Code
           </div>
           <div class="skill-tag">
+            <!-- change: added AI development tools -->
             <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="#107c41" d="M4 3h11l5 5v13H4z"></path>
-              <path fill="#33c481" d="M15 3v5h5z"></path>
-              <path fill="#fff" d="M7 8h3l1.5 2.4L13 8h3l-2.8 4 3 4h-3l-1.7-2.5L9.8 16H7l3-4-3-4z"></path>
+              <path d="M12 3l1.7 4.4L18 9l-4.3 1.6L12 15l-1.7-4.4L6 9l4.3-1.6L12 3z" fill="#0095f6"/>
+              <path d="M19 13l.9 2.1L22 16l-2.1.9L19 19l-.9-2.1L16 16l2.1-.9L19 13zM5 14l.8 1.7L7.5 16.5l-1.7.8L5 19l-.8-1.7-1.7-.8 1.7-.8L5 14z" fill="currentColor"/>
             </svg>
-            AI-driven Excel macro development for data analysis, cleaning, and automation
+            AI Tools (GitHub Copilot, Codex, ChatGPT)
+          </div>
+          <div class="skill-tag">
+            <!-- change: added Microsoft Excel logo -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#107c41" d="M4 3h11l5 5v13H4z"/>
+              <path fill="#33c481" d="M15 3v5h5z"/>
+              <path fill="#fff" d="M7 8h3l1.5 2.4L13 8h3l-2.8 4 3 4h-3l-1.7-2.5L9.8 16H7l3-4-3-4z"/>
+            </svg>
+            Microsoft Excel Advanced Functions
+          </div>
+          <div class="skill-tag">
+            <!-- change: added CAD tools icon -->
+            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 17L12 4l8 13H4z" fill="none" stroke="#0095f6" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M8 17l4-7 4 7M6 20h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            CATIA, SolidWorks, AutoCAD (Engineering Design Systems)
           </div>
         </div>
       </div>
@@ -1149,25 +954,19 @@ html {
             <div class="exp-icon">ME</div>
             <div class="exp-details">
               <h4>Design Engineer</h4>
-              <p>Mitsuba Philippines • July 2024 - Present</p>
+              <p>Mitsuba Philippines &bull; July 2024 - Present</p>
               <span class="dropdown-hint">Click to view work details</span>
             </div>
           </summary>
           <div class="detail-body exp-details">
-            <!-- change: experience rewritten with CAD/project leadership resume bullets -->
+            <!-- change: dropdown details based on tech-focused resume only -->
             <ul>
-              <li>Led end-to-end product development for the 9-month Rivian (USA) automotive wiper project, from research and design to mass production.</li>
-              <li>Managed project manpower, timelines, and deliverables to ensure on-time and efficient completion.</li>
-              <li>Supported and coordinated with multiple international automotive projects, including AUDI (Germany), Honda Buggy (Japan), Nissan (USA), and Suzuki (Vietnam).</li>
-              <li>Utilized AI tools for macros to analyze, clean, and organize large sets of engineering data, improving reporting accuracy and efficiency.</li>
-              <li>Supervised, organized, and revised 800 bulk CAD drawings, ensuring compliance with design standards and documentation.</li>
-              <li>Designed and improved mechanical assemblies, jigs, motor and wiper mechanisms using CATIA CAD 3D/2D.</li>
-              <li>Reviewed and validated CAD models and drawings for ISO and JIS standardization, ensuring manufacturability and quality.</li>
-              <li>Created and maintained Bills of Materials (BOMs), performed mass calculations, and prepared detailed technical documentation.</li>
-              <li>Enhanced workflow efficiency by analyzing man-hour discrepancies and introducing process improvements.</li>
-              <li>Translated technical drawings and documentation between English, Japanese, and German.</li>
-              <li>Utilized Data Management System (DMS) tools for version control and project tracking.</li>
-              <li>Practiced 5S and Kaizen principles to maintain lean and organized work environments.</li>
+              <li>Automated engineering data processing using AI-assisted coding and macro scripting, improving reporting accuracy and reducing manual workload.</li>
+              <li>Applied structured development methodology similar to SDLC, including requirement analysis, validation, testing, and release.</li>
+              <li>Managed structured technical documentation and version-controlled design revisions using Data Management Systems.</li>
+              <li>Analyzed system inefficiencies and implemented data-driven process optimizations, reducing manual processing time by approximately 50%.</li>
+              <li>Coordinated with cross-functional international teams in the USA, Germany, Japan, and Vietnam.</li>
+              <li>Led end-to-end product development lifecycle for international automotive projects, from research and system design to production deployment.</li>
             </ul>
           </div>
         </details>
@@ -1183,7 +982,7 @@ html {
           <span class="social-circle">
             <!-- change: added LinkedIn logo inside circle highlight -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.06c.53-1 1.84-2.2 3.79-2.2C19.7 8 20.5 10.67 20.5 14.14V24h-4v-8.74c0-2.08-.04-4.76-2.9-4.76-2.9 0-3.34 2.27-3.34 4.61V24h-4V8H8z"></path>
+              <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.06c.53-1 1.84-2.2 3.79-2.2C19.7 8 20.5 10.67 20.5 14.14V24h-4v-8.74c0-2.08-.04-4.76-2.9-4.76-2.9 0-3.34 2.27-3.34 4.61V24h-4V8H8z"/>
             </svg>
           </span>
           LinkedIn
@@ -1193,18 +992,27 @@ html {
           <span class="social-circle">
             <!-- change: added Gmail contact option -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 6.5A2.5 2.5 0 015.5 4h13A2.5 2.5 0 0121 6.5v11a2.5 2.5 0 01-2.5 2.5h-13A2.5 2.5 0 013 17.5v-11z" fill="none" stroke="currentColor" stroke-width="2"></path>
-              <path d="M4 7l8 6 8-6" fill="none" stroke="#ea4335" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M4 17l5.5-5M20 17l-5.5-5" fill="none" stroke="#fbbc05" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M3 6.5A2.5 2.5 0 015.5 4h13A2.5 2.5 0 0121 6.5v11a2.5 2.5 0 01-2.5 2.5h-13A2.5 2.5 0 013 17.5v-11z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M4 7l8 6 8-6" fill="none" stroke="#ea4335" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 17l5.5-5M20 17l-5.5-5" fill="none" stroke="#fbbc05" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </span>
           Gmail
         </a>
 
+        <a href="https://github.com/Ervin-py" class="social-link" target="_blank" rel="noopener">
+          <span class="social-circle">
+            <!-- change: added GitHub logo inside circle highlight -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56v-2.16c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.16 1.18A10.88 10.88 0 0112 6.04c.98 0 1.96.13 2.88.39 2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.42-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.19c0 .31.21.68.8.56A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/>
+            </svg>
+          </span>
+          GitHub
+        </a>
       </div>
 
       <a href="mailto:ervinadoptante@email.com" class="contact-btn">Email Me</a>
-      <p class="footer-note">© 2026 Ervin Adoptante</p>
+      <p class="footer-note">&copy; 2026 Ervin Adoptante</p>
     </footer>
 
   </div>
@@ -1218,51 +1026,22 @@ function togglePin(e) {
   e.preventDefault();
   const sb = document.querySelector('.sidebar');
   sb.classList.toggle('pinned');
-  document.body.classList.toggle('sidebar-pinned', sb.classList.contains('pinned'));
   document.querySelector('.pin-label').textContent = sb.classList.contains('pinned') ? "Unpin Sidebar" : "Pin Sidebar";
 }
 
-const internalNavLinks = document.querySelectorAll('a[href^="#"]');
 const tabs = document.querySelectorAll('.tab');
-const sidebarLinks = document.querySelectorAll('.sidebar a[href^="#"]');
 const tabTargets = Array.from(tabs)
   .map(tab => document.querySelector(tab.getAttribute('href')))
   .filter(Boolean);
-const observedTargets = Array.from(new Set(
-  Array.from(internalNavLinks)
-    .map(link => document.querySelector(link.getAttribute('href')))
-    .filter(Boolean)
-));
 
 function setActiveTab(id) {
   tabs.forEach(tab => {
     tab.classList.toggle('active', tab.getAttribute('href') === `#${id}`);
   });
-  sidebarLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-  });
 }
 
-function scrollToSection(id, updateHash = true) {
-  const section = document.getElementById(id);
-  if (!section) return;
-
-  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  setActiveTab(id);
-
-  if (updateHash) {
-    history.pushState(null, '', `#${id}`);
-  }
-}
-
-// change: explicitly handle all same-page nav links so sidebar, tabs, and profile buttons work consistently
-internalNavLinks.forEach(link => {
-  link.addEventListener('click', event => {
-    const id = link.getAttribute('href').slice(1);
-    if (!document.getElementById(id)) return;
-    event.preventDefault();
-    scrollToSection(id);
-  });
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => setActiveTab(tab.getAttribute('href').slice(1)));
 });
 
 const tabObserver = new IntersectionObserver(entries => {
@@ -1278,17 +1057,12 @@ const tabObserver = new IntersectionObserver(entries => {
   threshold: [0.1, 0.25, 0.5, 0.75]
 });
 
-observedTargets.forEach(section => tabObserver.observe(section));
+tabTargets.forEach(section => tabObserver.observe(section));
 
 const initialTab = location.hash ? location.hash.slice(1) : 'projects';
-const initialPanel = observedTargets.some(section => section.id === initialTab) ? initialTab : 'projects';
+const initialPanel = tabTargets.some(section => section.id === initialTab) ? initialTab : 'projects';
 setActiveTab(initialPanel);
-
-if (location.hash && document.getElementById(location.hash.slice(1))) {
-  requestAnimationFrame(() => scrollToSection(location.hash.slice(1), false));
-}
 </script>
 
-
-
-</body></html>
+</body>
+</html>
